@@ -12,17 +12,22 @@ public abstract class AbstractCellRule implements CellRule {
 
     protected abstract void action(Cell cell);
 
-    public void execute(Cell cell, List<Cell> neighborCells) {
+    public void execute(final Cell cell, final List<Cell> neighborCells) {
         if (apply(cell, neighborCells)) {
             action(cell);
         }
     }
 
-    protected long getAliveNeighborsCount(List<Cell> neighborCells){
+    protected boolean isValidCell(final Cell cell, final Predicate<Cell> condition) {
+        return cell != null && condition.test(cell);
+    }
+
+    protected long getAliveNeighborsCount(final List<Cell> neighborCells) {
         return getNeighborsCountByCondition(neighborCells, Cell::isAlive);
     }
 
-    private long getNeighborsCountByCondition(List<Cell> neighborCells, Predicate<Cell> condition) {
+    private long getNeighborsCountByCondition(final List<Cell> neighborCells,
+                                              final Predicate<Cell> condition) {
         return Optional.ofNullable(neighborCells)
                 .orElse(new ArrayList<>())
                 .stream()

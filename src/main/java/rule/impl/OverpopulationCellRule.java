@@ -10,13 +10,13 @@ public class OverpopulationCellRule extends AbstractCellRule {
     private static final long ALIVE_NEIGHBORS_LIMIT = 3L;
 
     @Override
-    protected boolean apply(Cell cell, List<Cell> neighborCells) {
+    protected boolean apply(final Cell cell, final List<Cell> neighborCells) {
         final long aliveNeighbors = getAliveNeighborsCount(neighborCells);
-        return cell.isAlive() && areAliveNeighborsOverLimit(aliveNeighbors);
+        return isValidCell(cell, Cell::isAlive) && areAliveNeighborsOverLimit(aliveNeighbors);
     }
 
     @Override
-    protected void action(Cell cell) {
+    protected void action(final Cell cell) {
         cell.kill();
     }
 
