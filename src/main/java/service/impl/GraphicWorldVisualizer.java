@@ -7,28 +7,46 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class SwingWorldVisualizer implements WorldVisualizer {
+public class GraphicWorldVisualizer implements WorldVisualizer {
 
     private static final int CELL_SIZE = 32;
     private final JFrame frame;
     private final JPanel panel;
+    private final long delay;
     private JLabel[][] grid;
 
-    public SwingWorldVisualizer() {
+    public GraphicWorldVisualizer(final long delay) {
         this.panel = new JPanel();
         this.frame = new JFrame();
+        this.delay = delay;
     }
 
     @Override
     public void visualize(World2D world) {
         initLabelPanel(world.getSize());
-        for (int x = 0; x < world.getSize(); x++) {
-            for (int y = 0; y < world.getSize(); y++) {
-                final Color color = world.getCell(x, y).isAlive() ? Color.GREEN : Color.BLACK;
-                grid[x][y].setBackground(color);
+        try {
+            Thread.sleep(delay);
+            for (int x = 0; x < world.getSize(); x++) {
+                for (int y = 0; y < world.getSize(); y++) {
+                    final Color color = world.getCell(x, y).isAlive() ? Color.GREEN : Color.BLACK;
+                    grid[x][y].setBackground(color);
+                }
             }
+            frame.setVisible(true);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-        frame.setVisible(true);
+    }
+
+    @Override
+    public void finish() {
+        try {
+            Thread.sleep(delay * 3);
+            frame.setVisible(false);
+            frame.dispose();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void initLabelPanel(final int size) {

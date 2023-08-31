@@ -3,7 +3,7 @@ package service.impl;
 import model.impl.World2D;
 import service.WorldVisualizer;
 
-public class StringWorld2DVisualizer implements WorldVisualizer {
+public class ConsoleWorld2DVisualizer implements WorldVisualizer {
 
     @Override
     public void visualize(World2D world) {
@@ -16,5 +16,10 @@ public class StringWorld2DVisualizer implements WorldVisualizer {
             builder.append('\n');
         }
         System.out.println(builder);
+    }
+
+    @Override
+    public void finish() {
+        System.out.println("Finished");
     }
 }

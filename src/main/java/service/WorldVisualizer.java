@@ -2,6 +2,7 @@ package service;
 
 import model.impl.World2D;
 
-public interface WorldVisualizer<T> {
-    T visualize(World2D world);
+public interface WorldVisualizer {
+    void visualize(World2D world);
+    void finish();
 }

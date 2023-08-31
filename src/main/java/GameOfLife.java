@@ -5,9 +5,10 @@ import rule.impl.OverpopulationCellRule;
 import rule.impl.ReproductionCellRule;
 import rule.impl.SurviveCellRule;
 import rule.impl.UnderpopulationCellRule;
+import service.WorldVisualizer;
+import service.impl.ConsoleWorld2DVisualizer;
+import service.impl.GraphicWorldVisualizer;
 import service.impl.RandomWorld2DGeneratorService;
-import service.impl.StringWorld2DVisualizer;
-import service.impl.SwingWorldVisualizer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,23 +17,22 @@ public class GameOfLife {
 
     private static final int WORLD_SIZE = 20;
     private static final int GENERATIONS = 100;
+    private static boolean USE_GUI = true;
+    private static long MILLI_DELAY = 500L;
 
-    public static void main(String[] args) throws InterruptedException {
-        final CellRule ruleEngine = createRuleEngine();
+    public static void main(String[] args) {
         final RandomWorld2DGeneratorService worldGeneratorService =
-                new RandomWorld2DGeneratorService(WORLD_SIZE, ruleEngine);
+                new RandomWorld2DGeneratorService(WORLD_SIZE, createRuleEngine());
 
         final World2D world = worldGeneratorService.generateWorld();
-        final StringWorld2DVisualizer visualizer = new StringWorld2DVisualizer();
-        final SwingWorldVisualizer guiVisualizer = new SwingWorldVisualizer();
+        final WorldVisualizer visualizer = getWorldVisualizer();
 
         for (int i = 0; i < GENERATIONS; i++) {
             world.runGeneration();
-            Thread.sleep(500);
-            //System.out.println(visualizer.visualize(world));
-            guiVisualizer.visualize(world);
+            System.out.println("Generation: " + (i + 1));
+            visualizer.visualize(world);
         }
-
+        visualizer.finish();
     }
 
     private static CellRuleEngine createRuleEngine() {
@@ -43,5 +43,9 @@ public class GameOfLife {
                 new ReproductionCellRule()
         );
         return new CellRuleEngine(rules);
+    }
+
+    private static WorldVisualizer getWorldVisualizer() {
+        return USE_GUI ? new GraphicWorldVisualizer(MILLI_DELAY) : new ConsoleWorld2DVisualizer();
     }
 }
