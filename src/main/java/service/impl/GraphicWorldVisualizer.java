@@ -10,8 +10,8 @@ import java.awt.*;
 public class GraphicWorldVisualizer implements WorldVisualizer {
 
     private static final int CELL_SIZE = 32;
-    public static final int FINISH_DELAY_MILLIS = 10_000;
-    public static final int START_DELAY_MILLIS = 3000;
+    public static final long FINISH_DELAY_MILLIS = 10_000;
+    public static final long START_DELAY_MILLIS = 5000L;
     private final JFrame frame;
     private final JPanel panel;
     private final long delay;
@@ -70,6 +70,7 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
         grid[x][y] = new JLabel();
         grid[x][y].setBorder(new LineBorder(Color.WHITE));
         grid[x][y].setOpaque(true);
+        grid[x][y].setBackground(Color.GRAY);
         grid[x][y].setMinimumSize(new Dimension(CELL_SIZE, CELL_SIZE));
         grid[x][y].setMinimumSize(new Dimension(CELL_SIZE, CELL_SIZE));
         panel.add(grid[x][y]);

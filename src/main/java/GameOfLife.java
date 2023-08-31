@@ -28,8 +28,8 @@ public class GameOfLife {
         final WorldVisualizer visualizer = getWorldVisualizer();
 
         for (int i = 0; i < GENERATIONS; i++) {
-            world.runGeneration();
             visualizer.visualize(world);
+            world.runGeneration();
         }
         visualizer.finish();
     }
