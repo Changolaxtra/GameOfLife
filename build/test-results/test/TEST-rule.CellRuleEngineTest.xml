@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="rule.CellRuleEngineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-08-31T19:18:16" hostname="EPMXGUAW1190" time="0.058">
-  <properties/>
-  <testcase name="given_list_of_rules_all_should_be_executed_over_cell_and_neighbors()" classname="rule.CellRuleEngineTest" time="0.058"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

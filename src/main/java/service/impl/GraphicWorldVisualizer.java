@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class SwingWorldVisualizer implements WorldVisualizer<Void> {
+public class SwingWorldVisualizer implements WorldVisualizer {
 
     private static final int CELL_SIZE = 32;
     private final JFrame frame;
@@ -20,7 +20,7 @@ public class SwingWorldVisualizer implements WorldVisualizer<Void> {
     }
 
     @Override
-    public Void visualize(World2D world) {
+    public void visualize(World2D world) {
         initLabelPanel(world.getSize());
         for (int x = 0; x < world.getSize(); x++) {
             for (int y = 0; y < world.getSize(); y++) {
@@ -29,7 +29,6 @@ public class SwingWorldVisualizer implements WorldVisualizer<Void> {
             }
         }
         frame.setVisible(true);
-        return null;
     }
 
     private void initLabelPanel(final int size) {

@@ -3,10 +3,10 @@ package service.impl;
 import model.impl.World2D;
 import service.WorldVisualizer;
 
-public class StringWorld2DVisualizer implements WorldVisualizer<String> {
+public class StringWorld2DVisualizer implements WorldVisualizer {
 
     @Override
-    public String visualize(World2D world) {
+    public void visualize(World2D world) {
         final StringBuilder builder = new StringBuilder();
         for (int x = 0; x < world.getSize(); x++) {
             for (int y = 0; y < world.getSize(); y++) {
@@ -15,6 +15,6 @@ public class StringWorld2DVisualizer implements WorldVisualizer<String> {
             }
             builder.append('\n');
         }
-        return builder.toString();
+        System.out.println(builder);
     }
 }
