@@ -6,7 +6,7 @@ import service.WorldVisualizer;
 public class ConsoleWorld2DVisualizer implements WorldVisualizer {
 
     @Override
-    public void visualize(World2D world) {
+    public void visualize(final World2D world) {
         final StringBuilder builder = new StringBuilder();
         for (int x = 0; x < world.getSize(); x++) {
             for (int y = 0; y < world.getSize(); y++) {

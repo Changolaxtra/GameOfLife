@@ -10,7 +10,8 @@ import java.awt.*;
 public class GraphicWorldVisualizer implements WorldVisualizer {
 
     private static final int CELL_SIZE = 32;
-    public static final int FINISH_DELAY_MILLIS = 30000;
+    public static final int FINISH_DELAY_MILLIS = 10_000;
+    public static final int START_DELAY_MILLIS = 3000;
     private final JFrame frame;
     private final JPanel panel;
     private final long delay;
@@ -23,9 +24,9 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
     }
 
     @Override
-    public void visualize(World2D world) {
-        initLabelPanel(world.getSize());
+    public void visualize(final World2D world) {
         try {
+            initLabelPanel(world.getSize());
             Thread.sleep(delay);
             for (int x = 0; x < world.getSize(); x++) {
                 for (int y = 0; y < world.getSize(); y++) {
@@ -34,7 +35,6 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
                 }
             }
             frame.setTitle("Generation " + world.getGeneration());
-            frame.setVisible(true);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -51,7 +51,7 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
         }
     }
 
-    private void initLabelPanel(final int size) {
+    private void initLabelPanel(final int size) throws InterruptedException {
         if (grid == null) {
             panel.setLayout(new GridLayout(size, size));
             grid = new JLabel[size][size];
@@ -61,6 +61,8 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
                 }
             }
             configureWindowSize(size);
+            frame.setVisible(true);
+            Thread.sleep(START_DELAY_MILLIS);
         }
     }
 
