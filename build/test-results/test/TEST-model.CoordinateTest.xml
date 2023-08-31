@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="model.CoordinateTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-08-31T19:18:12" hostname="EPMXGUAW1190" time="0.327">
+  <properties/>
+  <testcase name="given_coordinate_with_negative_value_3_and_positive_5_should_be_positive()" classname="model.CoordinateTest" time="0.048"/>
+  <testcase name="given_coordinate_with_values_3_and_5_should_be_positive()" classname="model.CoordinateTest" time="0.002"/>
+  <testcase name="given_coordinate_with_values_3_and_5_getY_should_be_5()" classname="model.CoordinateTest" time="0.003"/>
+  <testcase name="given_coordinate_with_values_3_and_5_getX_should_be_3()" classname="model.CoordinateTest" time="0.001"/>
+  <testcase name="given_coordinate_with_values_1_and_1_getAdjacentCoordinate_should_return_correct_coordinates()" classname="model.CoordinateTest" time="0.269"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

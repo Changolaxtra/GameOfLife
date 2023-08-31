@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rule.impl.ReproductionCellRuleTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-08-31T19:18:16" hostname="EPMXGUAW1190" time="0.007">
+  <properties/>
+  <testcase name="given_dead_cell_with_4_alive_neighbors_should_not_apply_and_remain_dead()" classname="rule.impl.ReproductionCellRuleTest" time="0.001"/>
+  <testcase name="given_dead_cell_with_2_alive_neighbors_should_not_apply_and_remain_dead()" classname="rule.impl.ReproductionCellRuleTest" time="0.001"/>
+  <testcase name="given_dead_cell_with_3_alive_neighbors_should_apply_and_live_after_action()" classname="rule.impl.ReproductionCellRuleTest" time="0.001"/>
+  <testcase name="given_alive_cell_should_not_apply_and_remain_alive()" classname="rule.impl.ReproductionCellRuleTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
