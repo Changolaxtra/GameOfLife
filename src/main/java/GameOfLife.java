@@ -15,7 +15,7 @@ import java.util.List;
 
 public class GameOfLife {
 
-    private static final int WORLD_SIZE = 5;
+    private static final int WORLD_SIZE = 25;
     private static final int GENERATIONS = 100;
     private static boolean USE_GUI = true;
     private static long MILLI_DELAY = 500L;
