@@ -7,4 +7,5 @@ public interface World {
     Cell getCell(int coordinateX, int coordinateY);
     List<Cell> getCellNeighbors(Cell cell);
     void runGeneration();
+    int getGeneration();
 }

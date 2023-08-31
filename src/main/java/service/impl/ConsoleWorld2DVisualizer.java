@@ -13,7 +13,7 @@ public class ConsoleWorld2DVisualizer implements WorldVisualizer {
                 final char icon = world.getCell(x, y).isAlive() ? 'A' : 'D';
                 builder.append('[').append(icon).append(']');
             }
-            builder.append('\n');
+            builder.append("\n Generation: ").append(world.getGeneration());
         }
         System.out.println(builder);
     }

@@ -10,6 +10,7 @@ import java.awt.*;
 public class GraphicWorldVisualizer implements WorldVisualizer {
 
     private static final int CELL_SIZE = 32;
+    public static final int FINISH_DELAY_MILLIS = 30000;
     private final JFrame frame;
     private final JPanel panel;
     private final long delay;
@@ -32,6 +33,7 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
                     grid[x][y].setBackground(color);
                 }
             }
+            frame.setTitle("Generation " + world.getGeneration());
             frame.setVisible(true);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -41,7 +43,7 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
     @Override
     public void finish() {
         try {
-            Thread.sleep(delay * 3);
+            Thread.sleep(FINISH_DELAY_MILLIS);
             frame.setVisible(false);
             frame.dispose();
         } catch (InterruptedException e) {
@@ -76,7 +78,6 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
 
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(100, 100, calculatedSize, calculatedSize);
         frame.setBounds(100, 100, calculatedSize, calculatedSize);
     }
 }

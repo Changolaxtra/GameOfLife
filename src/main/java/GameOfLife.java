@@ -15,7 +15,7 @@ import java.util.List;
 
 public class GameOfLife {
 
-    private static final int WORLD_SIZE = 20;
+    private static final int WORLD_SIZE = 5;
     private static final int GENERATIONS = 100;
     private static boolean USE_GUI = true;
     private static long MILLI_DELAY = 500L;
@@ -29,7 +29,6 @@ public class GameOfLife {
 
         for (int i = 0; i < GENERATIONS; i++) {
             world.runGeneration();
-            System.out.println("Generation: " + (i + 1));
             visualizer.visualize(world);
         }
         visualizer.finish();

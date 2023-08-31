@@ -15,6 +15,8 @@ public class World2D implements World {
     private final int size;
     private final CellRule cellRuleEngine;
 
+    private int generation = 0;
+
     public World2D(int size, CellRule cellRuleEngine) {
         this.size = size;
         this.cellRuleEngine = cellRuleEngine;
@@ -54,6 +56,12 @@ public class World2D implements World {
                 cellRuleEngine.execute(cell, getCellNeighbors(cell));
             }
         }
+        generation++;
+    }
+
+    @Override
+    public int getGeneration() {
+        return generation;
     }
 
     private boolean insideLimits(final Coordinate coordinate) {
