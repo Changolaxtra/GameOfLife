@@ -15,8 +15,7 @@ class RandomWorldGeneratorServiceTest {
     @Test
     public void given_size_of_3_should_generate_world_with_9_valid_cells(){
         // Given
-        final RandomWorld2DGeneratorService randomWorldGeneratorService =
-                new RandomWorld2DGeneratorService(3, new CellRuleEngine(new ArrayList<>()));
+        final RandomWorld2DGeneratorService randomWorldGeneratorService = new RandomWorld2DGeneratorService(3);
 
         // When
         final World2D world = randomWorldGeneratorService.generateWorld();

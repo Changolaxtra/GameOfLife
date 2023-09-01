@@ -12,16 +12,14 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomWorld2DGeneratorService implements WorldGeneratorService {
 
     private final int size;
-    private final CellRule cellRuleEngine;
 
-    public RandomWorld2DGeneratorService(final int size, final CellRule cellRuleEngine) {
+    public RandomWorld2DGeneratorService(final int size) {
         this.size = size;
-        this.cellRuleEngine = cellRuleEngine;
     }
 
     @Override
     public World2D generateWorld() {
-        final World2D world = new World2D(size, cellRuleEngine);
+        final World2D world = new World2D(size);
         populateWorld(world);
         return world;
     }

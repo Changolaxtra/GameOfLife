@@ -22,15 +22,11 @@ class World2DTest {
 
     private static final int WORLD_SIZE = 2;
 
-    private CellRuleEngine cellRuleEngineSpy;
-
     private World2D world;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
-        cellRuleEngineSpy = Mockito.spy(new CellRuleEngine(new ArrayList<>()));
-        world = new World2D(WORLD_SIZE, cellRuleEngineSpy);
+        world = new World2D(WORLD_SIZE);
     }
 
     @Test
@@ -44,18 +40,6 @@ class World2DTest {
 
         //Then
         assertEquals(cell, worldCell);
-    }
-
-    @Test
-    public void given_world_with_4_cells_ruleEngine_should_run_4_times() {
-        // Given
-        populateWorld(world);
-
-        //When
-        world.runGeneration();
-
-        //Then
-        verify(cellRuleEngineSpy, times(4)).execute(any(Cell.class), anyList());
     }
 
     @Test

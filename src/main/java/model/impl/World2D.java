@@ -13,13 +13,11 @@ public class World2D implements World {
 
     private final Cell[][] worldMap;
     private final int size;
-    private final CellRule cellRuleEngine;
 
     private int generation = 0;
 
-    public World2D(int size, CellRule cellRuleEngine) {
+    public World2D(int size) {
         this.size = size;
-        this.cellRuleEngine = cellRuleEngine;
         worldMap = new Cell[size][size];
     }
 
@@ -49,13 +47,7 @@ public class World2D implements World {
     }
 
     @Override
-    public void runGeneration() {
-        for (int x = 0; x < size; x++) {
-            for (int y = 0; y < size; y++) {
-                final Cell cell = getCell(x, y);
-                cellRuleEngine.execute(cell, getCellNeighbors(cell));
-            }
-        }
+    public void increaseGeneration() {
         generation++;
     }
 
@@ -64,11 +56,12 @@ public class World2D implements World {
         return generation;
     }
 
-    private boolean insideLimits(final Coordinate coordinate) {
-        return (coordinate.getX() < size) && (coordinate.getY() < size);
-    }
-
+    @Override
     public int getSize() {
         return size;
+    }
+
+    private boolean insideLimits(final Coordinate coordinate) {
+        return (coordinate.getX() < size) && (coordinate.getY() < size);
     }
 }
