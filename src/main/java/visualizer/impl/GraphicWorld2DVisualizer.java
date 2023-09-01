@@ -1,26 +1,32 @@
-package service.impl;
+package visualizer.impl;
 
 import model.impl.World2D;
-import service.WorldVisualizer;
+import visualizer.WorldVisualizer;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class GraphicWorldVisualizer implements WorldVisualizer {
+public class GraphicWorld2DVisualizer implements WorldVisualizer {
 
     private static final int CELL_SIZE = 32;
     public static final long FINISH_DELAY_MILLIS = 10_000;
     public static final long START_DELAY_MILLIS = 5000L;
+    private static final int THREADS = 50;
     private final JFrame frame;
     private final JPanel panel;
     private final long delay;
     private JLabel[][] grid;
 
-    public GraphicWorldVisualizer(final long delay) {
+    private final ExecutorService executor;
+
+    public GraphicWorld2DVisualizer(final long delay) {
         this.panel = new JPanel();
         this.frame = new JFrame();
         this.delay = delay;
+        executor = Executors.newFixedThreadPool(THREADS);
     }
 
     @Override
@@ -29,10 +35,7 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
             initLabelPanel(world.getSize());
             Thread.sleep(delay);
             for (int x = 0; x < world.getSize(); x++) {
-                for (int y = 0; y < world.getSize(); y++) {
-                    final Color color = world.getCell(x, y).isAlive() ? Color.GREEN : Color.BLACK;
-                    grid[x][y].setBackground(color);
-                }
+                executor.execute(new PartialGraphicWorldUpdater(world, grid, x));
             }
             frame.setTitle("Generation " + world.getGeneration());
         } catch (InterruptedException e) {
@@ -46,6 +49,7 @@ public class GraphicWorldVisualizer implements WorldVisualizer {
             Thread.sleep(FINISH_DELAY_MILLIS);
             frame.setVisible(false);
             frame.dispose();
+            executor.shutdown();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

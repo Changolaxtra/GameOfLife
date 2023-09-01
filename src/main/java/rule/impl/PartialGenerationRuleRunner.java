@@ -1,4 +1,4 @@
-package rule.impl.concurrent;
+package rule.impl;
 
 import model.impl.Cell;
 import model.impl.World;

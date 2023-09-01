@@ -1,19 +1,18 @@
-package service.impl;
+package generator.impl;
 
+import generator.WorldGenerator;
 import model.CellState;
 import model.Coordinate;
 import model.impl.Cell;
 import model.impl.World2D;
-import rule.CellRule;
-import service.WorldGeneratorService;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomWorld2DGeneratorService implements WorldGeneratorService {
+public class RandomWorld2DGenerator implements WorldGenerator {
 
     private final int size;
 
-    public RandomWorld2DGeneratorService(final int size) {
+    public RandomWorld2DGenerator(final int size) {
         this.size = size;
     }
 

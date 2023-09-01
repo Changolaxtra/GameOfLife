@@ -1,7 +1,7 @@
-package service.impl;
+package visualizer.impl;
 
 import model.impl.World2D;
-import service.WorldVisualizer;
+import visualizer.WorldVisualizer;
 
 public class ConsoleWorld2DVisualizer implements WorldVisualizer {
 

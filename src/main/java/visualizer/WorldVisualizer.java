@@ -1,4 +1,4 @@
-package service;
+package visualizer;
 
 import model.impl.World2D;
 

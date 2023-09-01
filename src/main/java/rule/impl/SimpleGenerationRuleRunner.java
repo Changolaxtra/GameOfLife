@@ -18,4 +18,9 @@ public class SimpleGenerationRuleRunner implements GenerationRuleRunner {
         }
         world.increaseGeneration();
     }
+
+    @Override
+    public void stop() {
+
+    }
 }

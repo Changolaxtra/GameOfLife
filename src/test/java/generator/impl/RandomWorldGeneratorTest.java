@@ -1,21 +1,18 @@
-package service;
+package generator.impl;
 
 import model.impl.Cell;
 import model.impl.World2D;
 import org.junit.jupiter.api.Test;
-import rule.CellRuleEngine;
-import service.impl.RandomWorld2DGeneratorService;
-
-import java.util.ArrayList;
+import generator.impl.RandomWorld2DGenerator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RandomWorldGeneratorServiceTest {
+class RandomWorldGeneratorTest {
 
     @Test
     public void given_size_of_3_should_generate_world_with_9_valid_cells(){
         // Given
-        final RandomWorld2DGeneratorService randomWorldGeneratorService = new RandomWorld2DGeneratorService(3);
+        final RandomWorld2DGenerator randomWorldGeneratorService = new RandomWorld2DGenerator(3);
 
         // When
         final World2D world = randomWorldGeneratorService.generateWorld();
