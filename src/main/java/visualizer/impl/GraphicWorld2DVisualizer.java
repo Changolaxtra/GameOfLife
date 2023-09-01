@@ -37,7 +37,7 @@ public class GraphicWorld2DVisualizer implements WorldVisualizer {
             for (int x = 0; x < world.getSize(); x++) {
                 executor.execute(new PartialGraphicWorldUpdater(world, grid, x));
             }
-            frame.setTitle("Generation " + world.getGeneration());
+            frame.setTitle("Generation " + (world.getGeneration() + 1));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
